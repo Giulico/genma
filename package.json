@@ -1,10 +1,10 @@
 {
   "private": true,
-  "workspaces": ["packages/*"],
-  "bin": {
-    "genma": "bin/init.js"
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
+    "genma": "node ./tasks/genma.js",
     "test": "lerna run test",
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff"
@@ -20,7 +20,7 @@
     "lerna": "^3.22.1",
     "shelljs": "^0.8.4"
   },
-  "name": "@genma/cli",
+  "name": "genma",
   "version": "0.2.0",
   "config": {
     "commitizen": {
