@@ -8,5 +8,6 @@
   },
   "dependencies": {
     "@genma/utils": "^1.0.2"
-  }
+  },
+  "gitHead": "ac47a818fda8210a20dcdeef55c2fc367cbfab6a"
 }
