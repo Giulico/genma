@@ -7,7 +7,7 @@
     "test": "echo testing scripts with version: $npm_package_version"
   },
   "dependencies": {
-    "@genma/utils": "^1.0.5"
+    "@giulico/utils": "^1.0.5"
   },
   "gitHead": "91213e9eea15d0d4f897a5aca9da004c1685e0b2"
 }
