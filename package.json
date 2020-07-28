@@ -1,8 +1,5 @@
 {
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "genma": "node ./tasks/genma.js",
     "test": "lerna run test",

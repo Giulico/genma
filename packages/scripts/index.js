@@ -1,4 +1,4 @@
-const utils = require("@genma/utils");
+const utils = require("@giulico/utils");
 
 utils();
 console.log("and GENMA SCRIPTS");
