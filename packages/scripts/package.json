@@ -1,13 +1,13 @@
 {
   "name": "@genma/scripts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "test": "echo testing scripts with version: $npm_package_version"
   },
   "dependencies": {
-    "@genma/utils": "^1.0.3"
+    "@genma/utils": "^1.0.4"
   },
   "gitHead": "59cf49b1bda26d8632a0c22c974c6f0cf580846e"
 }
