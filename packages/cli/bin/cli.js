@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 
+const fs = require("fs");
+const _ = require("lodash");
 const chalk = require("chalk");
 const shell = require("shelljs");
 const inquirer = require("inquirer");
 
 const panda = require("../lib/panda.js");
+const editPackage = require("../lib/package.js");
 
 const log = console.log;
 
@@ -32,6 +35,9 @@ inquirer
   ])
   .then((answers) => {
     log("hai risposto", answers);
+
+    shell.exec("npm i @giulico/scripts");
+    editPackage();
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -40,5 +46,3 @@ inquirer
       // Something else when wrong
     }
   });
-
-shell.exec("npm i @giulico/scripts && node ../lib/package.js");
