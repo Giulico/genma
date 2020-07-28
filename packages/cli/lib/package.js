@@ -2,13 +2,11 @@ const fs = require("fs");
 const _ = require("lodash");
 const shell = require("shelljs");
 
-const packageJson = require("./package.json");
-
 module.exports = editPackage;
 
 function editPackage() {
   const ret = shell.pwd();
-  console.log("Current path:", ret);
+  const packageJson = require("../package.json");
 
   if (packageJson) {
     _.set(packageJson, "scripts.genma", "webpack genma-webpack-config.js");
@@ -19,3 +17,5 @@ function editPackage() {
     console.log("package.json updated!");
   });
 }
+
+editPackage();
