@@ -1,20 +1,13 @@
 {
   "name": "@giulico/cli",
-  "version": "1.0.5",
+  "version": "1.0.4",
   "description": "> TODO: description",
   "author": "giuliocollesei <giuliocollesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/cli#readme",
   "license": "ISC",
-  "main": "lib/cli.js",
   "bin": {
     "cli": "./bin/cli.js"
   },
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "access": "public"
   },
