@@ -1,0 +1,12 @@
+{
+  "name": "@genma/scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo testing scripts with version: $npm_package_version"
+  },
+  "dependencies": {
+    "@genma/utils": "^1.0.0"
+  }
+}

@@ -1,15 +1,27 @@
 {
-  "name": "@giulico/genma",
-  "version": "0.1.0",
-  "description": "MDX Boilerplate",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "bin": {
     "init": "bin/init.js"
   },
-  "scripts": {},
-  "author": "",
+  "scripts": {
+    "test": "lerna run test --scope={@genma/scripts,@genma/utils}",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff"
+  },
+  "author": "Giulio Collesei <giulio.collesei@gmail.com>",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "cz-conventional-changelog": "3.2.0",
+    "lerna": "^3.22.1",
     "shelljs": "^0.8.4"
+  },
+  "name": "genma",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
