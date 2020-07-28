@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "lib/cli.js",
   "bin": {
-    "genma": "./bin/genma.js"
+    "cli": "./bin/genma.js"
   },
   "directories": {
     "lib": "lib"
