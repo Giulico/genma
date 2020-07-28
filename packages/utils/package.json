@@ -6,5 +6,8 @@
   "scripts": {
     "test": "echo testing utilities with version: $npm_package_version"
   },
-  "gitHead": "91213e9eea15d0d4f897a5aca9da004c1685e0b2"
+  "gitHead": "91213e9eea15d0d4f897a5aca9da004c1685e0b2",
+  "dependencies": {
+    "lodash": "^4.17.19"
+  }
 }
