@@ -1,19 +1,21 @@
 const fs = require("fs");
 const _ = require("lodash");
 const shell = require("shelljs");
-shell.exec("pwd");
 
-// const packageJson = require("./package.json");
+const packageJson = require("./package.json");
 
-// module.exports = editPanda;
+module.exports = editPackage;
 
-// function editPanda() {
-//   if (packageJson) {
-//     _.set(packageJson, "scripts.genma", "webpack genma-webpack-config.js");
-//   }
+function editPackage() {
+  const ret = shell.pwd();
+  console.log("Current path:", ret);
 
-//   fs.writeFile("package.json", JSON.stringify(packageJson, null, 2), (err) => {
-//     if (err) throw err;
-//     console.log("package.json updated!");
-//   });
-// }
+  if (packageJson) {
+    _.set(packageJson, "scripts.genma", "webpack genma-webpack-config.js");
+  }
+
+  fs.writeFile("package.json", JSON.stringify(packageJson, null, 2), (err) => {
+    if (err) throw err;
+    console.log("package.json updated!");
+  });
+}
