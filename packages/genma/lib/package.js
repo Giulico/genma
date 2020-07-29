@@ -7,9 +7,9 @@ module.exports = editPackage;
 
 function editPackage() {
   const ret = shell.pwd();
-  const appDir = path.dirname(require.main.filename);
+  var appRoot = require("app-root-path");
 
-  const packageJson = path.join(appDir, "./package.json");
+  const packageJson = require(path.join(appRoot.path, "./package.json"));
 
   if (packageJson) {
     _.set(
@@ -24,3 +24,5 @@ function editPackage() {
     console.log("package.json updated!");
   });
 }
+
+editPackage();
