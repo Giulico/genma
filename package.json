@@ -4,27 +4,32 @@
     "packages/*"
   ],
   "scripts": {
-    "genma": "node ./tasks/genma.js",
     "test": "lerna run test",
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff"
   },
+  "bin": {
+    "genma": "./bin/cli.js"
+  },
   "author": "Giulio Collesei <giulio.collesei@gmail.com>",
+  "homepage": "https://github.com/Giulico/genma#readme",
   "bugs": {
     "url": "https://github.com/Giulico/genma/issues"
   },
-  "homepage": "https://github.com/Giulico/genma#readme",
   "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "cz-conventional-changelog": "3.2.0",
     "lerna": "^3.22.1",
     "shelljs": "^0.8.4"
   },
-  "name": "genma",
-  "version": "0.2.0",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.19"
   }
 }
