@@ -6,22 +6,12 @@
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/cli#readme",
   "license": "ISC",
   "main": "lib/cli.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
   "bin": {
-    "cli": "./bin/cli.js"
+    "genma": "./bin/genma.js"
   },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Giulico/genma.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/Giulico/genma/issues"

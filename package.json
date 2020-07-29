@@ -1,31 +1,32 @@
 {
-  "name": "genma",
-  "version": "1.0.1-alpha.56+59e878b",
-  "description": "CLI scripts for Genma boilerplate",
-  "author": "giuliocollesei <giuliocollesei@gmail.com>",
-  "homepage": "https://github.com/Giulico/genma/tree/master/packages/cli#readme",
-  "license": "ISC",
-  "main": "lib/cli.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "bin": {
-    "cli": "./bin/cli.js"
-  },
-  "files": [
-    "lib"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Giulico/genma.git"
-  },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "genma": "webpack genma-webpack-config.js"
+    "test": "lerna run test",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff"
   },
+  "author": "Giulio Collesei <giulio.collesei@gmail.com>",
+  "homepage": "https://github.com/Giulico/genma#readme",
   "bugs": {
     "url": "https://github.com/Giulico/genma/issues"
   },
-  "gitHead": "59e878be22d93cd46995dc1adcefadc50d7654de"
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "3.2.0",
+    "lerna": "^3.22.1",
+    "shelljs": "^0.8.4"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.19"
+  }
 }
