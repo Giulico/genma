@@ -8,9 +8,6 @@
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff"
   },
-  "bin": {
-    "genma": "./bin/cli.js"
-  },
   "author": "Giulio Collesei <giulio.collesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma#readme",
   "bugs": {
