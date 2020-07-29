@@ -39,8 +39,8 @@ inquirer
   ])
   .then((answers) => {
     if (answers === "install") {
-      // shell.exec("npm i @giulico/scripts");
-      // editPackage();
+      shell.exec("npm i @genma/webpack-common");
+      editPackage();
     }
   })
   .catch((error) => {
