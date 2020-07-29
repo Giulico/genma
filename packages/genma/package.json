@@ -1,6 +1,6 @@
 {
   "name": "genma",
-  "version": "1.0.1-alpha.56+59e878b",
+  "version": "1.0.1",
   "description": "CLI scripts for Genma boilerplate",
   "author": "giuliocollesei <giuliocollesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/cli#readme",
