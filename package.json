@@ -23,10 +23,5 @@
     "cz-conventional-changelog": "3.2.0",
     "lerna": "^3.22.1",
     "shelljs": "^0.8.4"
-  },
-  "dependencies": {
-    "chalk": "^4.1.0",
-    "inquirer": "^7.3.3",
-    "lodash": "^4.17.19"
   }
 }

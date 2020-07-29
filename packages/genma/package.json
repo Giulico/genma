@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Giulico/genma/issues"
   },
-  "gitHead": "59e878be22d93cd46995dc1adcefadc50d7654de"
+  "gitHead": "59e878be22d93cd46995dc1adcefadc50d7654de",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.19"
+  }
 }
