@@ -17,5 +17,3 @@ function editPackage() {
     console.log("package.json updated!");
   });
 }
-
-editPackage();
