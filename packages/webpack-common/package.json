@@ -1,6 +1,6 @@
 {
   "name": "@genma/webpack-common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common webpack configuration for Genma",
   "author": "giuliocollesei <giuliocollesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/webpack-common#readme",
