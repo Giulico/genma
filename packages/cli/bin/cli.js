@@ -6,8 +6,8 @@ const chalk = require("chalk");
 const shell = require("shelljs");
 const inquirer = require("inquirer");
 
-const genmaASCII = require("../lib/genma-ascii.js");
-const editPackage = require("../lib/package.js");
+const genmaASCII = require("../packages/cli/lib/genma-ascii.js");
+const editPackage = require("../packages/cli/lib/package.js");
 
 const log = console.log;
 
