@@ -38,7 +38,7 @@ inquirer
     },
   ])
   .then((answers) => {
-    if (answers === "install") {
+    if (answers["start"] === "install") {
       shell.exec("npm i @genma/webpack-common");
       editPackage();
     }
