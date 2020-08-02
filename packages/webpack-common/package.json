@@ -1,6 +1,6 @@
 {
   "name": "@genma/webpack-common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Common webpack configuration for Genma",
   "author": "giuliocollesei <giuliocollesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/webpack-common#readme",
@@ -31,9 +31,9 @@
     "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.0.9",
-    "webpack": "^4.44.0"
+    "webpack-merge": "^5.0.9"
   }
 }
