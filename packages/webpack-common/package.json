@@ -6,46 +6,34 @@
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/webpack-common#readme",
   "license": "ISC",
   "main": "lib/webpack-common.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Giulico/genma.git"
+    "url": "git+https://github.com/Giulico/genma.git",
+    "directory": "packages/webpack-common"
   },
   "bin": {
     "genma-webpack": "./bin/genma-webpack.js"
   },
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean -s && npm run production -s",
-    "production": "cross-env webpack --progress --hide-modules --config ./webpack/webpack.prod.js"
-  },
   "bugs": {
     "url": "https://github.com/Giulico/genma/issues"
   },
-  "devDependencies": {
-    "cross-env": "^7.0.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "rimraf": "^3.0.2",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack-merge": "^5.0.9"
-  },
   "dependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
     "babel-loader": "^8.1.0",
     "chalk": "^4.1.0",
+    "html-webpack-plugin": "^4.3.0",
     "open": "^7.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.1",
-    "webpack": "^4.44.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.0.9"
+    "webpack-merge": "^5.0.9",
+    "webpack": "^4.44.0"
   }
 }

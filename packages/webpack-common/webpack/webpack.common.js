@@ -1,9 +1,11 @@
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const { entryApp, outputApp } = require('../config/paths')
+const { entryApp, outputApp, htmlTemplateApp } = require('../config/paths')
 
 console.log('entryApp', entryApp)
 console.log('outputApp', outputApp)
+console.log('htmlTemplateApp', htmlTemplateApp)
 
 module.exports = {
   entry: {
@@ -19,7 +21,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [{ loader: 'babel-loader' }],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.js$/,
@@ -28,6 +35,12 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Design System with Genma',
+      template: htmlTemplateApp,
+    }),
+  ],
   // TODO: Production only
   // optimization: {
   //   minimizer: [
