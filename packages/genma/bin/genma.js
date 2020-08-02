@@ -40,7 +40,8 @@ inquirer
   .then((answers) => {
     if (answers["start"] === "install") {
       shell.exec("npm i @genma/webpack-common");
-      editPackage();
+      shell.exec("pwd");
+      // editPackage();
     }
   })
   .catch((error) => {

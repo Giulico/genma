@@ -20,6 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/Giulico/genma.git"
   },
+  "bin": {
+    "genma-webpack": "./bin/genma-webpack.js"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean -s && npm run production -s",
