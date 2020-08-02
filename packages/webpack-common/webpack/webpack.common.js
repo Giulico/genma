@@ -1,26 +1,41 @@
-"use strict";
-const path = require("path");
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const { entryApp, outputApp } = require('../config/paths')
 
-const rootPath = path.resolve(__dirname, "..");
+console.log('entryApp', entryApp)
+console.log('outputApp', outputApp)
 
 module.exports = {
   entry: {
-    app: path.join(rootPath, "src/js/app.js"),
+    app: entryApp,
   },
   output: {
-    path: path.join(rootPath, "dist/js"),
-    filename: "[name].js",
+    path: outputApp,
+    filename: '[name].js',
   },
-  stats: "normal",
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
-      }),
+  stats: 'normal',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'babel-loader' }],
+      },
+      {
+        test: /\.js$/,
+        use: ['source-map-loader'],
+        enforce: 'pre',
+      },
     ],
   },
-};
+  // TODO: Production only
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       cache: true,
+  //       parallel: true,
+  //       sourceMap: true, // set to true if you want JS source maps
+  //     }),
+  //   ],
+  // },
+}

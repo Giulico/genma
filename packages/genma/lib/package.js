@@ -5,18 +5,15 @@ const path = require("path");
 
 module.exports = editPackage;
 
-function editPackage() {
-  const ret = shell.pwd();
-  var appRoot = require("app-root-path");
+// TODO: remove app-root-path dependency
 
-  const packageJson = require(path.join(appRoot.path, "./package.json"));
+function editPackage() {
+  const appDirectory = fs.realpathSync(process.cwd());
+  const packageJson = require(path.join(appDirectory, "./package.json"));
 
   if (packageJson) {
-    _.set(
-      packageJson,
-      "scripts.genma",
-      "cross-env webpack --progress --hide-modules --config ./node_modules/@genma/webpack-common/webpack/webpack.prod.js"
-    );
+    _.set(packageJson, "scripts.start", "genma-webpack start");
+    _.set(packageJson, "scripts.build", "genma-webpack build");
   }
 
   fs.writeFile("package.json", JSON.stringify(packageJson, null, 2), (err) => {

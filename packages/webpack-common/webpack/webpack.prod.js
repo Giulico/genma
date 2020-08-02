@@ -1,10 +1,10 @@
-const baseConfig = require("./webpack.common");
-const { merge } = require("webpack-merge");
+const baseConfig = require('./webpack.common')
+const { merge } = require('webpack-merge')
 
 module.exports = merge(baseConfig, {
-  mode: "production",
+  mode: 'production',
   output: {
-    publicPath: "/",
+    publicPath: '/',
   },
-  devtool: "source-map",
-});
+  devtool: 'source-map',
+})

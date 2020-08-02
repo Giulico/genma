@@ -1,0 +1,14 @@
+{
+  "extends": ["plugin:prettier/recommended", "eslint:recommended"],
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": "off",
+    "curly": "warn"
+  }
+}
