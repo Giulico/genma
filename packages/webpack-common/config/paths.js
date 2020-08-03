@@ -6,10 +6,12 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 
 const entryApp = resolveApp('src/js/index.js')
 const outputApp = resolveApp('dist/js')
-const htmlTemplateApp = resolveApp('src/doc/index.html')
+const htmlTemplateApp = resolveApp('src/doc/index.pug')
+const htmlFileName = path.join(outputApp, 'index.html')
 
 module.exports = {
   entryApp,
   outputApp,
   htmlTemplateApp,
+  htmlFileName,
 }

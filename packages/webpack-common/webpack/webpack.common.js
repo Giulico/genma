@@ -1,11 +1,13 @@
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const { entryApp, outputApp, htmlTemplateApp } = require('../config/paths')
-
-console.log('entryApp', entryApp)
-console.log('outputApp', outputApp)
-console.log('htmlTemplateApp', htmlTemplateApp)
+const {
+  entryApp,
+  outputApp,
+  htmlFileName,
+  htmlTemplateApp,
+} = require('../config/paths')
 
 module.exports = {
   entry: {
@@ -16,29 +18,78 @@ module.exports = {
     filename: '[name].js',
   },
   stats: 'normal',
+  node: {
+    fs: 'empty',
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/env', '@babel/preset-react'],
+            },
           },
-        },
+          {
+            loader: 'source-map-loader',
+          },
+        ],
+        enforce: 'pre',
       },
       {
-        test: /\.js$/,
-        use: ['source-map-loader'],
-        enforce: 'pre',
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hrm: process.env.NODE_ENV === 'development',
+              reloadAll: true,
+            },
+          },
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.pug$/,
+        use: [
+          { loader: 'raw-loader' },
+          {
+            loader: 'pug-html-loader',
+            options: {
+              pretty: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.mdx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/env', '@babel/preset-react'],
+            },
+          },
+          {
+            loader: '@mdx-js/loader',
+          },
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Design System with Genma',
+      inject: true,
       template: htmlTemplateApp,
+      filename: htmlFileName,
+      minify: false,
+      alwaysWriteToDisk: true,
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/style.css',
     }),
   ],
   // TODO: Production only

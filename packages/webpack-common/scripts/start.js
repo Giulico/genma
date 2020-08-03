@@ -62,7 +62,7 @@ server.listen(webServerDefaultPort, HOST, (err) => {
     return console.log(err)
   }
   if (isInteractive) {
-    // clearConsole()
+    clearConsole()
   }
   console.log(chalk.cyan('Starting the development server...\n'))
   openBrowser(`http://localhost:${webServerDefaultPort}`)
