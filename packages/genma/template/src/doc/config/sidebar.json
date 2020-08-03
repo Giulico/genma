@@ -1,0 +1,12 @@
+{
+  "sidebar": [
+    {
+      "name": "Prima pagina",
+      "component": "getting-started.mdx"
+    },
+    {
+      "name": "Introduzione",
+      "component": "intro.mdx"
+    }
+  ]
+}
