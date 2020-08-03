@@ -1,6 +1,6 @@
 {
   "name": "genma",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "CLI scripts for Genma boilerplate",
   "author": "giuliocollesei <giuliocollesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/cli#readme",
@@ -23,9 +23,9 @@
     "inquirer": "^7.3.3",
     "lodash": "^4.17.19",
     "ncp": "^2.0.0",
+    "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react": "^16.13.1",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.4"
   }
