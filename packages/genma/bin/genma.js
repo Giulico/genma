@@ -9,7 +9,6 @@ const inquirer = require('inquirer')
 const rimraf = require('rimraf')
 const { printBanner, clearConsole } = require('@genma/scripts')
 
-const genmaASCII = require('../lib/genma-ascii.js')
 const editPackage = require('../lib/package.js')
 
 const log = console.log
