@@ -4,20 +4,26 @@ const fs = require('fs')
 const path = require('path')
 const _ = require('lodash')
 const chalk = require('chalk')
-const shell = require('shelljs')
+const { execFileSync } = require('child_process')
 const inquirer = require('inquirer')
 const rimraf = require('rimraf')
+const { printBanner, clearConsole } = require('@genma/scripts')
 
 const genmaASCII = require('../lib/genma-ascii.js')
 const editPackage = require('../lib/package.js')
 
 const log = console.log
 
-log(chalk.white(genmaASCII))
-log(chalk.white(`================================================`))
-log(chalk.red('The best boilerplate for building Design Systems'))
-log(chalk.white(`================================================`))
-log()
+// Paths
+const appDirectory = fs.realpathSync(process.cwd())
+const srcDirectory = path.resolve(appDirectory, 'src')
+const appPackageJson = path.resolve(appDirectory, 'package.json')
+const templateDirectory = path.resolve(
+  appDirectory,
+  'node_modules/@genma/template/src'
+)
+
+printBanner()
 
 installOrUpdate()
 
@@ -44,29 +50,61 @@ function installOrUpdate() {
     ])
     .then(async (answers) => {
       if (answers['start'] === 'install') {
-        // Install dependencies
-        shell.exec('npm i @genma/webpack-common')
-        // Edit package.json
-        editPackage()
-        // Copy the minimum tree of folder
-        const ncp = require('ncp').ncp
-        const appDirectory = fs.realpathSync(process.cwd())
-        const srcDirectory = path.resolve(appDirectory, 'src')
-        const templateDirectory = path.resolve(__dirname, '../template')
-
+        // Check if ./src folder already exists and delete it
         if (fs.existsSync(srcDirectory)) {
           await srcAlreadyExists()
         }
-        console.log('ora passo di qui')
+
+        // Check if package.json exists and create it
+        if (!fs.existsSync(appPackageJson)) {
+          log(chalk.cyan('Creating package.json...'))
+          try {
+            execFileSync('pwd')
+            execFileSync('npm', ['init'], { stdio: 'inherit' })
+          } catch (e) {
+            log(chalk.red('Genma fails to initialize project.'))
+            console.log(e.stderr)
+            process.exit(0)
+          }
+        }
+
+        // Install dependencies
+        try {
+          clearConsole()
+          printBanner()
+          log(chalk.cyan('Installing dependencies...'))
+          const dependencies = ['@genma/webpack-common', '@genma/template']
+          execFileSync('npm', ['i', ...dependencies], { stdio: 'pipe' })
+        } catch (e) {
+          log(chalk.red('Genma fails to intall the dependencies.'))
+          log(
+            chalk.red(
+              'The installation process will continue. Please use `npm i` at the end of the process.'
+            )
+          )
+          console.log(e.stderr)
+        }
+
+        // Update package.json
+        editPackage()
+
+        // Copy the minimum tree of folder
+        const ncp = require('ncp').ncp
+
         ncp(templateDirectory, appDirectory, (err) => {
           if (err) {
             return console.error(err)
           }
-          console.log('Folder scaffolding created!')
         })
+
+        // Congratulation message
+        clearConsole()
+        printBanner()
+        log(chalk.bold.green('Congratulation!'))
+        log(chalk.green('Genma is ready. Use `npm start`'))
       }
     })
-    .catch(console.log)
+    .catch(log)
 }
 
 function srcAlreadyExists() {
@@ -93,11 +131,8 @@ function srcAlreadyExists() {
     ])
     .then((answers) => {
       if (answers['src-folder'] === 'override') {
-        const appDirectory = fs.realpathSync(process.cwd())
-        const srcDirectory = path.resolve(appDirectory, 'src')
         // Delete src folder
         rimraf.sync(srcDirectory)
-        console.log('Already existing folder removed')
       } else {
         // Quit cli
         process.exit(1)

@@ -1,0 +1,22 @@
+{
+  "name": "@genma/scripts",
+  "version": "1.0.0",
+  "description": "Scripts and utilities for Genma",
+  "author": "giuliocollesei <giuliocollesei@gmail.com>",
+  "homepage": "https://github.com/Giulico/genma/tree/master/packages/scripts#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Giulico/genma.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Giulico/genma/issues"
+  }
+}

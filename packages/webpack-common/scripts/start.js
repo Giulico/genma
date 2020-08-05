@@ -13,9 +13,9 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const { merge } = require('webpack-merge')
-const clearConsole = require('../utils/clearConsole')
-const openBrowser = require('../utils/openBrowser')
+const { clearConsole, printBanner } = require('@genma/scripts')
 
+const openBrowser = require('../utils/openBrowser')
 const commonConfig = require('../webpack/webpack.common')
 const isInteractive = process.stdout.isTTY
 
@@ -63,7 +63,9 @@ server.listen(webServerDefaultPort, HOST, (err) => {
   }
   if (isInteractive) {
     clearConsole()
+    printBanner()
   }
   console.log(chalk.cyan('Starting the development server...\n'))
+  console.log(chalk.cyan(`http://localhost:${webServerDefaultPort}`))
   openBrowser(`http://localhost:${webServerDefaultPort}`)
 })

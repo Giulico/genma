@@ -1,0 +1,21 @@
+{
+  "name": "@genma/template",
+  "version": "1.0.0",
+  "description": "Basic template for Genma Design System Documentation",
+  "author": "giuliocollesei <giuliocollesei@gmail.com>",
+  "homepage": "https://github.com/Giulico/genma/tree/master/packages/template#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Giulico/genma.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Giulico/genma/issues"
+  }
+}
