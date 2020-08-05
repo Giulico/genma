@@ -1,6 +1,6 @@
 {
   "name": "genma",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "CLI scripts for Genma boilerplate",
   "author": "giuliocollesei <giuliocollesei@gmail.com>",
   "homepage": "https://github.com/Giulico/genma/tree/master/packages/cli#readme",
@@ -18,7 +18,7 @@
   },
   "gitHead": "59e878be22d93cd46995dc1adcefadc50d7654de",
   "dependencies": {
-    "@genma/scripts": "^1.0.6",
+    "@genma/scripts": "^1.0.7",
     "app-root-path": "^3.0.0",
     "chalk": "^4.1.0",
     "inquirer": "^7.3.3",
