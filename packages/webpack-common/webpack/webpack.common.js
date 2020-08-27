@@ -1,26 +1,25 @@
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const rehypePrism = require('@mapbox/rehype-prism')
 
 const {
   entryApp,
   outputApp,
-  htmlFileName,
   htmlTemplateApp,
+  postCssConfig,
 } = require('../config/paths')
 
 module.exports = {
-  entry: {
-    app: entryApp,
-  },
+  entry: [entryApp],
   output: {
     path: outputApp,
-    filename: '[name].js',
+    filename:
+      process.env.NODE_ENV === 'production'
+        ? '[name]-[contenthash].js'
+        : '[name].[hash].js',
   },
   stats: 'normal',
-  node: {
-    fs: 'empty',
-  },
   module: {
     rules: [
       {
@@ -30,6 +29,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              plugins: ['react-hot-loader/babel'],
               presets: ['@babel/env', '@babel/preset-react'],
             },
           },
@@ -49,7 +49,15 @@ module.exports = {
               reloadAll: true,
             },
           },
-          'css-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: postCssConfig,
+              },
+            },
+          },
         ],
       },
       {
@@ -70,11 +78,15 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
+              plugins: ['react-hot-loader/babel'],
               presets: ['@babel/env', '@babel/preset-react'],
             },
           },
           {
             loader: '@mdx-js/loader',
+            options: {
+              rehypePlugins: [[rehypePrism, { ignoreMissing: true }]],
+            },
           },
         ],
       },
@@ -83,20 +95,38 @@ module.exports = {
         type: 'json', // Required by Webpack v4
         use: 'yaml-loader',
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
       template: htmlTemplateApp,
-      filename: htmlFileName,
       minify: false,
       alwaysWriteToDisk: true,
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/style.css',
+      filename:
+        process.env.NODE_ENV === 'production'
+          ? '[name]-[contenthash].css'
+          : '[name]-[hash].css',
+      hmr: process.env.NODE_ENV === 'production' ? false : true,
     }),
   ],
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+      assets: '../../assets',
+      config: '../../config',
+    },
+  },
   // TODO: Production only
   // optimization: {
   //   minimizer: [

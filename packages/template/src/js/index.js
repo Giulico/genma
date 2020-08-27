@@ -1,4 +1,4 @@
-import "../doc/css/style.css";
+import "../doc/styles/index.css";
 
 import React from "react";
 import ReactDOM from "react-dom";

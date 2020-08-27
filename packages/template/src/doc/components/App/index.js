@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import kebabCase from "lodash/kebabCase";
 import Layout from "../Layout";
-import routes from "../../config/sidebar.json";
+import routes from "../../config/sidebar.yaml";
 
 const App = () => {
   return (
@@ -17,8 +17,9 @@ const App = () => {
               return (
                 <Route
                   key={index}
-                  path={`/${kebabCase(route.name)}`}
+                  path={`/${kebabCase(route.path || route.name)}`}
                   component={Component}
+                  exact
                 />
               );
             })}

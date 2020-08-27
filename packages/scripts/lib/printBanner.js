@@ -4,8 +4,8 @@ const log = console.log
 
 module.exports = printBanner
 
-function printBanner() {
-  log(chalk.white(genmaASCII))
+function printBanner(version) {
+  log(chalk.white(genmaASCII(version)))
   log(chalk.white(`================================================`))
   log(chalk.red('The best boilerplate for building Design Systems'))
   log(chalk.white(`================================================`))

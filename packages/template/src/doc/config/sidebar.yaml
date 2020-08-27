@@ -1,0 +1,13 @@
+---
+sidebar:
+  - name: Introduzione
+    path: /
+    component: intro.mdx
+  - name: Genma
+    component: genma.mdx
+  - name: Genma scripts
+    component: genma-scripts.mdx
+  - name: Genma webpack
+    component: webpack-common.mdx
+  - name: Genma template
+    component: genma-template.mdx
